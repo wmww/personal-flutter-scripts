@@ -5,12 +5,11 @@ source ./env.sh
 
 if test ! -d flutter; then
   echo "Cloning flutter framework"
-  git clone --depth=1 https://github.com/flutter/flutter.git
+  git clone https://github.com/flutter/flutter.git
 fi
 
-echo "Pulling flutter framework"
 git -C flutter checkout master
-git -C flutter pull --depth=1
+git -C flutter pull
 
 flutter
 flutter config --no-analytics
