@@ -31,7 +31,8 @@ if test ! -d engine_gclient; then
   git remote add wmww git@github.com:wmww/flutter_engine.git
   git checkout master
   git pull
-  ./tools/gn --unoptimized
+  cd ../../..
+  ./clean_engine.sh
   echo "Done cloning engine, you might want to build now"
 else
   echo "Pulling engine"
@@ -39,6 +40,7 @@ else
   git checkout master
   git pull
   cd ../..
+  echo "Syncing with gclient"
   gclient sync
   echo "Done pulling engine, you might want to build now"
 fi

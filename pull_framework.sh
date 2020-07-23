@@ -14,7 +14,7 @@ fi
 
 flutter
 flutter config --no-analytics
-config --enable-linux-desktop
+flutter config --enable-linux-desktop
 
 echo "This should show a Linux desktop device:"
 flutter devices
