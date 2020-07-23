@@ -13,7 +13,8 @@ fi
 
 if test ! -d engine_gclient; then
   echo "Creating engine directory"
-  echo "solutions = [
+  mkdir engine_gclient && cd engine_gclient
+  echo 'solutions = [
   {
     "managed": False,
     "name": "src/flutter",
@@ -22,17 +23,22 @@ if test ! -d engine_gclient; then
     "deps_file": "DEPS",
     "safesync_url": "",
   },
-]" > .gclient
+]' > .gclient
   echo "Syncing with gclient"
   gclient sync
   cd src/flutter
   git remote add robert git@github.com:robert-ancell/engine.git
   git remote add wmww git@github.com:wmww/flutter_engine.git
+  git checkout master
   git pull
   ./tools/gn --unoptimized
-  cd ../../../
+  echo "Done cloning engine, you might want to build now"
 else
   echo "Pulling engine"
-  git -C ./engine_gclient/src/flutter checkout master
-  git -C ./engine_gclient/src/flutter pull
+  cd engine_gclient/src/flutter
+  git checkout master
+  git pull
+  cd ../..
+  gclient sync
+  echo "Done pulling engine, you might want to build now"
 fi
