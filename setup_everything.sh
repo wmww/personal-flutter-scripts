@@ -3,6 +3,12 @@ set -euo pipefail
 
 source ./env.sh
 
+echo "If any of the following checks fail, run 'apt install build-essential clang ninja-build'"
+git --version
+gcc --version
+clang --version
+ninja --version
+
 echo "Pulling engine"
 ./pull_engine.sh
 
