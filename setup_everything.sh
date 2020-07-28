@@ -3,12 +3,13 @@ set -euo pipefail
 
 source ./env.sh
 
-echo "If any of the following checks fail, run 'apt install build-essential clang ninja-build python2'"
-git --version
-gcc --version
-clang --version
-ninja --version
-python2 --version
+echo "If any of the following checks fail, run 'apt install build-essential clang ninja-build python2 curl'"
+git --version &>/dev/null
+gcc --version &>/dev/null
+clang --version &>/dev/null
+ninja --version &>/dev/null
+python2 --version &>/dev/null
+curl --version &>/dev/null
 
 echo "Pulling engine"
 ./pull_engine.sh
