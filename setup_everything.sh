@@ -25,4 +25,4 @@ echo  "Creating demoapp"
 ./create_demoapp.sh
 
 echo "Building demoapp"
-./build_demoapp.sh
+./build_app.sh demoapp
