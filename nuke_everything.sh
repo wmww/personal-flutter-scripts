@@ -12,6 +12,5 @@ rm -Rf flutter
 rm -Rf engine_gclient
 rm -Rf demoapp
 
-echo "Setting up everything"
+echo "You may now run ./setup_everything.sh"
 
-./setup_everything.sh
