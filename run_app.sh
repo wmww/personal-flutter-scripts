@@ -8,6 +8,12 @@ APP_DIR="${1:-.}" # First command line argument or current directory if none
 BUILD_DIR="$APP_DIR/build"
 ls "$BUILD_DIR" > /dev/null # make sure it exists
 
+LIB_FLUTTER="$SOURCE_DIR/engine_gclient/src/out/host_debug_unopt/libflutter_linux_gtk.so"
+if test ! -f "$LIB_FLUTTER"; then
+    echo "$LIB_FLUTTER does not exist"
+    exit 1
+fi
+
 BIN=$(find "$BUILD_DIR" -type f -executable | grep bundle | cat) # trailing cat keeps the script from exiting if there's an error
 
 if test -z "$BIN"; then
@@ -18,6 +24,6 @@ elif test $(echo "$BIN" | wc -l) -ne 1; then
   echo "$BIN"
   exit 1
 else
-  echo "Running $BIN"
-  "$BIN"
+  echo "Running LD_PRELOAD=\"$LIB_FLUTTER\" $BIN"
+  LD_PRELOAD="$LIB_FLUTTER" "$BIN"
 fi
