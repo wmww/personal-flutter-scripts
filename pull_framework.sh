@@ -15,6 +15,7 @@ git -C flutter pull
 flutter
 flutter config --no-analytics
 flutter config --enable-linux-desktop
+flutter update-packages
 
 echo "This should show a Linux desktop device:"
 flutter devices
