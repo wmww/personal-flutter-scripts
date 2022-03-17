@@ -8,4 +8,4 @@ rm -Rf ./engine_gclient/src/out/
 cd ./engine_gclient/src/flutter
 
 echo "Generating new build dir"
-./tools/gn --unoptimized
+./tools/gn --unoptimized --no-stripped
