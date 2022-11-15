@@ -4,6 +4,6 @@ set -euo pipefail
 source ./env.sh
 
 cd engine_gclient
-gclient sync
+gclient sync -D
 
 echo "You might now need to rebuild any apps"
