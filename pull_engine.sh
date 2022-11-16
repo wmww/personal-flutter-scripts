@@ -34,6 +34,10 @@ if test ! -f engine_gclient/setup_complete.txt; then
     git remote add robert git@github.com:robert-ancell/engine.git
     git fetch robert
   fi
+  if ! git remote -v | grep goderbauer; then
+    git remote add goderbauer git@github.com:goderbauer/engine.git
+    git fetch goderbauer
+  fi
   if ! git remote -v | grep wmww; then
     git remote add wmww git@github.com:wmww/flutter_engine.git
     git fetch wmww
